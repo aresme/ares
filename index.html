@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love Question for You 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 80px auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 2;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 32px;
+            font-family: 'Sacramento', cursive;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            background: #ff4b7a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #e0436d;
+            transform: scale(1.1);
+        }
+
+        #no-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .love-letter {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: #ff4b7a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            text-align: center;
+            width: 300px;
+            max-width: 80%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fireworks {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .firework {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius: 50%;
+            animation: fireworks 1.5s ease-out infinite;
+        }
+    </style>
+
+    <script>
+        function moveNoButton() {
+            let btn = document.getElementById("no-btn");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+
+        function showLoveMessage() {
+            document.getElementById("love-letter").style.display = "flex";
+            playMusic();
+            createFireworks();
+        }
+
+        function playMusic() {
+            let audio = new Audio('https://www.bensound.com/bensound-music/bensound-romantic.mp3');
+            audio.play();
+        }
+
+        function createFireworks() {
+            for (let i = 0; i < 20; i++) {
+                let firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = Math.random() * window.innerWidth + "px";
+                firework.style.top = Math.random() * window.innerHeight + "px";
+                firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1500);
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://drive.google.com/file/d/1qx3cB2jv6_jNAYHOA3AHNAPz0Y0qg-2E/view?usp=drive_link" alt="Sad Lovers">
+
+
+        <h1>Will you be mine forever? 💖</h1>
+        <p id="message"></p>
+        <div class="buttons">
+            <button onclick="showLoveMessage()">Yes 💘</button>
+            <button id="no-btn" onclick="moveNoButton()" onmouseover="moveNoButton()">No 😭</button>
+        </div>
+    </div>
+
+    <div id="love-letter" class="love-letter">
+        💌 Dear Love, <br>
+        I promise to always cherish you, love you endlessly, and stand by your side forever. 💖 <br>
+        *From the depths of my heart, I adore you!* 💞
+    </div>
+
+</body>
+</html>
